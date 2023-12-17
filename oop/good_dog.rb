@@ -1,9 +1,11 @@
 class GoodDog
 
-  attr_accessor :name
+  attr_accessor :name, :height, :weight
 
-  def initialize(name)
-    @name = name # @name is instance variable
+  def initialize(n, h ,w)
+    @name = n # @name is instance variable
+    @height = h
+    @weight = w
   end
 
   # def name     # This was renamed from "get_name"
@@ -18,10 +20,21 @@ class GoodDog
   def speak
     "#{name} says Arf!" #instead of @name (instance variable), its better to call getter method (renamed `name`) instead
   end
+
+  def change_info(n, h, w)
+    @name = n
+    @height = h
+    @weight = w
+  end
+
+  def info
+    "#{name} weighs #{weight} and is #{height} tall."
+  end
 end
 
-sparky = GoodDog.new("Sparky")
+sparky = GoodDog.new("Sparky", "12 inches", "10 lbs")
 puts sparky.speak
+puts sparky.info
 puts sparky.name            # => "Sparky"
 sparky.name = "Spartacus"
 puts sparky.name            # => "Spartacus"
