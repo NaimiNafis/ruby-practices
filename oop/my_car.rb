@@ -1,14 +1,15 @@
 class MyCar
   attr_accessor :year, :color, :model
 
-  def initialize(y, c, m)
+  def initialize(y, c, m) # use with .new
     @year = y
     @color = c
     @model = m
     @current_speed = 0
+    @current_gas = 0
   end
 
-  def brake(number)
+  def brake(number) # exp for instance method
     @current_speed -= number
     puts "You push the brake and decelerate #{number} mph."
   end
@@ -32,13 +33,17 @@ class MyCar
     puts "Your new #{color} paint job looks great!"
   end
 
-  def info
-    puts "#{model} is a car made in #{year} with #{color} color."
+  def self.gas_mileage(gallons, miles) # exp for classes method
+    puts "#{miles / gallons} miles per gallon of gas"
+  end
+
+  def to_s
+    "#{model} is a car made in #{year} with #{color} color." #modified to_s
   end
 
 end
 
-lumina = MyCar.new(1997, 'chevy lumina', 'white')
+lumina = MyCar.new(1997, 'white', 'chevy lumina')
 lumina.speed_up(20)
 lumina.current_speed
 lumina.speed_up(20)
@@ -50,4 +55,5 @@ lumina.current_speed
 lumina.shut_down
 lumina.current_speed
 lumina.spray_paint('red')
-lumina.info
+MyCar.gas_mileage(12, 34)
+puts lumina
